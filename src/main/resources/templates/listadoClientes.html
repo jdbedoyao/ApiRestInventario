@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Personas</title>
+<link rel="stylesheet" th:href="@{/css/listadoClientes.css}" />
+</head>
+<body>
+
+<div class="conte1">
+	<div class="conte2">
+      <table>
+			<thead>
+				<th>Id Cliente</th>
+				<th>Cuenta</th>
+				<th>Nombre Cliente</th>
+				<th>Id Servicio</th>
+				<th>Nodo</th>
+				<th>Usuario</th>
+			</thead>
+			<tbody>
+               <tr th:each="cliente : ${listaClientes}">
+					<td th:text="${cliente.getId_cliente()}"></td>
+					<td th:text="${cliente.getCuenta()}"></td>
+					<td th:text="${cliente.getNombre_cliente()}"></td>
+					<td th:text="${cliente.getId_servicio()}"></td>
+					<td th:text="${cliente.getNodo()}"></td>
+					<td th:text="${cliente.getUsuario()}"></td>
+
+				</tr>
+                  
+			</tbody>
+
+	</table>
+	
+	</div>
+ </div>
+
+</body>
+</html>
