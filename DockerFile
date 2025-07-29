@@ -1,0 +1,35 @@
+# Usa una imagen base con JDK para compilar la aplicación.
+FROM eclipse-temurin:17-jdk-focal AS build
+
+# Establece el directorio de trabajo dentro del contenedor.
+WORKDIR /app
+
+# Copia el archivo pom.xml para que Maven pueda descargar las dependencias.
+COPY pom.xml .
+
+# Descarga las dependencias de Maven.
+RUN mvn dependency:go-offline -B
+
+# Copia el código fuente de la aplicación.
+COPY src ./src
+
+# Empaqueta la aplicación Spring Boot en un archivo JAR.
+RUN mvn clean install -DskipTests
+
+# --- Etapa de Ejecución (Run Stage) ---
+# Usa una imagen base más ligera con solo JRE para la ejecución de la aplicación.
+FROM eclipse-temurin:17-jre-focal
+
+# Establece el directorio de trabajo dentro del contenedor.
+WORKDIR /app
+
+# Copia el archivo JAR generado desde la etapa de construcción.
+# El nombre del JAR debe coincidir con el nombre final de tu artefacto Spring Boot.
+COPY --from=build /app/target/microservicio-inventario.jar microservicio-inventario.jar
+
+# Expone el puerto en el que se ejecutará la aplicación.
+# Asegúrate de que este puerto coincida con 'server.port' en tu application.properties.
+EXPOSE 8082
+
+# Define el comando de entrada para ejecutar la aplicación JAR.
+ENTRYPOINT ["java", "-jar", "microservicio-inventario.jar"]

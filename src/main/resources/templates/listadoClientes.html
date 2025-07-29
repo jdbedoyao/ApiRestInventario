@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <title>Listado de Personas</title>
 <link rel="stylesheet" th:href="@{/css/listadoClientes.css}" />
+<script th:src="@{/js/listaClientes.js}"></script>
+<script th:src="@{/js/all.js}"></script>
+<script th:src="@{/js/fontawesome.js}"></script>
+<link rel="stylesheet"
+	th:href="@{/css/fontawesome.css}">
 </head>
 <body>
 
@@ -17,6 +22,7 @@
 				<th>Id Servicio</th>
 				<th>Nodo</th>
 				<th>Usuario</th>
+				<th>Operación</th>
 			</thead>
 			<tbody>
                <tr th:each="cliente : ${listaClientes}">
@@ -26,7 +32,7 @@
 					<td th:text="${cliente.getId_servicio()}"></td>
 					<td th:text="${cliente.getNodo()}"></td>
 					<td th:text="${cliente.getUsuario()}"></td>
-
+					<td><a th:href="@{/htmlclientes/editarcliente/{id}(id=${cliente.getId_cliente()})}">Editar👍</a></td>
 				</tr>
                   
 			</tbody>
@@ -34,7 +40,18 @@
 	</table>
 	
 	</div>
+
+	<div class="conte3">
+		<button type="button" class="btnCrearNuevo"
+			onclick="location.href='./crearcliente/0'">
+			<i class="fas fa-plus-circle"></i>&nbsp;Nueva Persona
+		</button>
+	</div>
+	
  </div>
 
+
+
 </body>
+
 </html>

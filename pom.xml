@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jdbo.hm</groupId>
-	<artifactId>HmApiRest</artifactId>
+	<artifactId>ApiRestInventario</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>HmApiRest</name>
-	<description>Hola Mundo en springboot</description>
+	<name>ApiRestInventario</name>
+	<description>Microservicio Manejo de Inventario</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -52,10 +52,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>			
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.12.0</version> <!-- Usa la última versión estable -->
+		</dependency>					
 	</dependencies>
 
 	<build>
+	    <finalName>microservicio-inventario</finalName> 
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
