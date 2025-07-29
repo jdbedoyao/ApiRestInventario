@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "ab7c270a-6366-4db0-8e87-771c93b74e8f",
+		"name": "Api_RestInventario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ConsultarInventario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8085/ExApiRestProducto/V.1/inventarios/1/cantidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"ExApiRestProducto",
+						"V.1",
+						"inventarios",
+						"1",
+						"cantidad"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
